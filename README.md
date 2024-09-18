@@ -44,7 +44,7 @@ v-0.0.1
 
 Autores ✒️
 Yeraldin Yuseth Urbina - / Desarrolladora
-Mayerly Milena Flórez Mendoza - / Desarrolladora
+Diocelis Mayerlin Guaramato Puertas - / Desarrolladora
 Luisa Arboleda -/ Desarrolladora
 
 
