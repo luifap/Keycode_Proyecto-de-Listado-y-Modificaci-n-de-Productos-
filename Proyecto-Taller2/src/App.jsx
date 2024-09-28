@@ -6,6 +6,12 @@ import './componentes/estilos/styles.css';  // Importar los estilos desde la car
 
 const App = () => {
   const [paginaActual, setPaginaActual] = useState("inicio");
+  const [productos, setProductos] = useState([]); // Estado para los productos
+
+  // Función para agregar un nuevo producto
+  const agregarProducto = (producto) => {
+    setProductos((prevProductos) => [...prevProductos, producto]);
+  };
 
   return (
     <div>
@@ -15,8 +21,8 @@ const App = () => {
         <button onClick={() => setPaginaActual("modificacion")}>Agregar Producto</button>
       </nav>
       {paginaActual === "inicio" && <PaginaInicio />}
-      {paginaActual === "lista" && <ListaProductos />}
-      {paginaActual === "modificacion" && <Formulario />}
+      {paginaActual === "lista" && <ListaProductos productos={productos} />} {/* Pasar productos a ListaProductos */}
+      {paginaActual === "modificacion" && <Formulario agregarProducto={agregarProducto} />} {/* Pasar la función agregarProducto */}
     </div>
   );
 };

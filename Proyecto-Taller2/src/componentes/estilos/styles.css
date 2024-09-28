@@ -183,44 +183,56 @@ body {
   
   
   /* Estilos para el Formulario */
-  .formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 300px;
-    margin: 0 auto;
-  }
-  
-  .formulario div {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .formulario label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .formulario input {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .formulario button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #d745eb;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .formulario button:hover {
-    background-color: #940888;
-  }
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.formulario div {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.formulario input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formulario button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #d745eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background-color: #940888;
+}
+
+/* Estilos para el mensaje de confirmación */
+.mensaje-confirmacion {
+  color: rgb(87, 0, 128);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: #ffe6f4;
+  padding: 10px;
+  border: 1px solid #9e4caf;
+  border-radius: 4px;
+}
