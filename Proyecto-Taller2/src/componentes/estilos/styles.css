@@ -3,11 +3,11 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9; /* Color de fondo suave */
+    background-color: #f9f9f9; 
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
   }
   
   nav {
@@ -81,7 +81,7 @@ body {
 
   .miembro:hover {
     transform: scale(1.05);
-    border-color: #ff8dbb; /* Color de borde al pasar el mouse */
+    border-color: #ff8dbb; 
   }
   
   .miembro {
@@ -96,7 +96,7 @@ body {
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    border: 3px solid #ff8dbb; /* Borde de la foto */
+    border: 3px solid #ff8dbb; 
   }
   
   .enlaces {
@@ -113,7 +113,7 @@ body {
     text-decoration: underline;
   }
   
-  /* Estilos para la Tarjeta de Producto */
+/* Estilos para la Tarjeta */
   .tarjeta {
     border: 1px solid #ddd;
     background-color: white;
@@ -140,7 +140,7 @@ body {
     color: #555;
   }
   
-  /* Estilos para la Lista de Productos */
+/* Estilos para la Lista de Productos */
 .lista-productos {
   display: flex;
   flex-wrap: wrap;
@@ -156,13 +156,13 @@ body {
   border-radius: 8px;
   width: 200px;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s; /* Añade transición suave */
+  transition: transform 0.2s, box-shadow 0.2s; 
 }
 
 /* Efecto hover con sombra y transformación */
 .tarjeta:hover {
-  transform: scale(1.05); /* Agrandar ligeramente al pasar el ratón */
-  box-shadow: 0 6px 8px rgba(83, 4, 48, 0.2); /* Añadir sombra */
+  transform: scale(1.05); 
+  box-shadow: 0 6px 8px rgba(83, 4, 48, 0.2); 
 }
 
 .tarjeta-imagen {
@@ -179,10 +179,57 @@ body {
   color: #555;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.pagination-text {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: #ff8dbb; 
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #b21bee; 
+}
+
+.btn:disabled {
+  background-color: #cccccc; 
+  cursor: not-allowed;
+}
+
+.page-number {
+  margin: 0 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #000;
+  transition: background-color 0.3s ease;
+}
+
+.page-number:hover {
+  background-color: #f0f0f0;
+}
 
   
   
-  /* Estilos para el Formulario */
+/* Estilos para el Formulario */
 .formulario {
   display: flex;
   flex-direction: column;
@@ -222,7 +269,7 @@ body {
 }
 
 .formulario button:hover {
-  background-color: #940888;
+  background-color: #bd076b;
 }
 
 /* Estilos para el mensaje de confirmación */

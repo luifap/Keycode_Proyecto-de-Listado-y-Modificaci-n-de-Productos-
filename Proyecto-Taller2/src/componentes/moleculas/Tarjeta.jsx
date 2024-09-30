@@ -1,11 +1,15 @@
 import React from 'react';
 
-<div className="tarjeta" key={producto.id}>
-  <h3>{producto.name}</h3>
-  <img src={producto.image} alt={producto.name} className="tarjeta-imagen" />
-  <p>Especie: {producto.species}</p>
-  <p>Origen: {producto.origin.name}</p>
-  <p>Estado: {producto.status}</p>
-</div>
+function Tarjeta({ tarjeta }) {
+    return (
+        <div className="tarjeta" key={tarjeta.id}>
+            <h3>{tarjeta.name}</h3>
+            <img className="tarjeta-imagen" src={tarjeta.image} alt={tarjeta.name} />
+            <p>Origen: {tarjeta.origin.name}</p>
+            <p>Especie: {tarjeta.species}</p>
+            <p>Estado: {tarjeta.status}</p>
+        </div>
+    );
+}
 
 export default Tarjeta;
