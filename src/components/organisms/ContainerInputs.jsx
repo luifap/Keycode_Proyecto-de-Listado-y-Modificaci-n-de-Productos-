@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../CommonElements/input/Input'; 
+import Input from '../input/Input'; 
 
 function ContainerInputs({ inputs, onChange }) {
   return (

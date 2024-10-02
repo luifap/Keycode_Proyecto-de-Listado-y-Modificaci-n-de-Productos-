@@ -1,5 +1,5 @@
 import React from 'react';
-import Boton from '../CommonElements/atoms/Boton';
+import Boton from '../atoms/Boton';
 
 const Header = ({ onPageChange }) => {
   return (

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import Card from "../CommonElements/cards/Card";
+import Card from "../cards/Card";
+import Formulario from "../pages/Formulario";
+import PaginaLista from "../pages/PaginaLista";
 
 function Navepage({ page, setPage }) {
   const totalPages = 10; 
@@ -27,7 +29,7 @@ function Navepage({ page, setPage }) {
             key={number}
             className="page-number"
             onClick={() => setPage(number)}
-            style={{ color: number === page ? '#007bff' : '#000' }} // Resalta la página actual
+            style={{ color: number === page ? '#007bff' : '#000' }} 
           >
             {number}
           </span>
@@ -48,7 +50,7 @@ function CardList() {
 
   const [page, setPage] = useState(1);
 
-  // Petición hacia el servidor backend (De rickandmorty)
+
   useEffect(() => {
     const fetchCharacters = async () => {
       setLoading(true);
@@ -62,6 +64,13 @@ function CardList() {
 
     fetchCharacters();
   }, [page]);
+
+  const handleAddCard = (newCard) => {
+    setCards((prevCards) => [
+      ...prevCards,
+      { id: Date.now(), ...newCard },
+    ]);
+  };
 
   if (loading) {
     return <div>Cargando página...</div>;
@@ -78,9 +87,7 @@ function CardList() {
               <p>{card.status}</p>
             </div>
           ))}
-
       </div>
-     
     </div>
   );
 }

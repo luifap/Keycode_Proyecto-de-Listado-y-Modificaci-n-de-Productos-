@@ -1,5 +1,5 @@
 import React from 'react';
-import MiembrosEquipo from '../components/layout/MiembrosEquipo';
+import MiembrosEquipo from '../organisms/MiembrosEquipo';
 
 const PaginaInicio = () => {
   return (
