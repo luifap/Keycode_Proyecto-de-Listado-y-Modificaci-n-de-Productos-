@@ -28,7 +28,9 @@ const Formulario = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    onSubmit({ id: Date.now(), ...formData });
+    
+    // Resetea el formulario
     setFormData({
       name: '',
       image: '',

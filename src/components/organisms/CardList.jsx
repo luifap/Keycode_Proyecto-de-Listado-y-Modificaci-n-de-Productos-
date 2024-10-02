@@ -49,6 +49,7 @@ function CardList() {
   const [loading, setLoading] = useState(true);
 
   const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
 
   useEffect(() => {
@@ -65,12 +66,22 @@ function CardList() {
     fetchCharacters();
   }, [page]);
 
+  // Filtro de busqueda
+  const filteredCards = cards.filter(card => {
+    const lowerCaseTerm = searchTerm.toLowerCase();
+    return (
+      card.name.toLowerCase().includes(lowerCaseTerm) ||
+      card.origin.name.toLowerCase().includes(lowerCaseTerm) ||
+      card.species.toLowerCase().includes(lowerCaseTerm) ||
+      card.status.toLowerCase().includes(lowerCaseTerm)
+    );
+  });
+
   const handleAddCard = (newCard) => {
-    setCards((prevCards) => [
-      ...prevCards,
-      { id: Date.now(), ...newCard },
-    ]);
+    setCards((prevCards) => [...prevCards, newCard]);
   };
+
+    
 
   if (loading) {
     return <div>Cargando página...</div>;
@@ -79,14 +90,21 @@ function CardList() {
   return (
     <div >
       <Navepage page={page} setPage={setPage} />
+
+      <input
+        type="text"
+        placeholder="Búsqueda"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-bar"
+      />
+
+        <Formulario onSubmit={handleAddCard} />
+
       <div className="lista-productos">
-          {cards.map((card) => (
-            <div className="tarjeta" key={card.id}>
-              <h3>{card.name}</h3>
-              <img src={card.image} alt={card.name} className="tarjeta-imagen" />
-              <p>{card.status}</p>
-            </div>
-          ))}
+        {filteredCards.map((card) => (
+          <Card key={card.id} card={card} /> 
+        ))}
       </div>
     </div>
   );
