@@ -2,21 +2,27 @@ import React, { useState } from 'react';
 
 const Formulario = ({ agregarProducto }) => {
   const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
   const [imagen, setImagen] = useState('');
+  const [origen, setOrigen] = useState('');
+  const [especie, setEspecie] = useState('');
+  const [estado, setEstado] = useState('');
   const [mensaje, setMensaje] = useState(''); // Estado para el mensaje de confirmación
 
   const manejarSubmit = (e) => {
     e.preventDefault();
     const nuevoProducto = {
       nombre,
-      descripcion,
       imagen,
+      origen,
+      especie,
+      estado,
     };
     agregarProducto(nuevoProducto);
     setNombre('');
-    setDescripcion('');
     setImagen('');
+    setOrigen('');
+    setEspecie('');
+    setEstado('');
     
     // Mostrar mensaje de confirmación
     setMensaje('Producto agregado con éxito!');
@@ -40,16 +46,7 @@ const Formulario = ({ agregarProducto }) => {
             required
           />
         </div>
-        <div>
-          <label htmlFor="descripcion">Descripción</label>
-          <input
-            type="text"
-            id="descripcion"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-            required
-          />
-        </div>
+        
         <div>
           <label htmlFor="imagen">URL de la imagen</label>
           <input
@@ -57,6 +54,39 @@ const Formulario = ({ agregarProducto }) => {
             id="imagen"
             value={imagen}
             onChange={(e) => setImagen(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="origen">Origen</label>
+          <input
+            type="text"
+            id="origen"
+            value={origen}
+            onChange={(e) => setOrigen(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="especie">Especies</label>
+          <input
+            type="text"
+            id="especie"
+            value={especie}
+            onChange={(e) => setEspecie(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="estado">Estado</label>
+          <input
+            type="text"
+            id="estado"
+            value={estado}
+            onChange={(e) => setEstado(e.target.value)}
             required
           />
         </div>
