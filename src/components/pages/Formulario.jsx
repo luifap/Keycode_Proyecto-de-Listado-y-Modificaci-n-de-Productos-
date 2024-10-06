@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/styles.css'; 
 
-const Formulario = ({ onSubmit }) => {
+const Formulario = ({ setCards }) => {
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -9,6 +10,7 @@ const Formulario = ({ onSubmit }) => {
     species: '',
     status: '',
   });
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,19 +30,15 @@ const Formulario = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ id: Date.now(), ...formData });
-    
-    // Resetea el formulario
-    setFormData({
-      name: '',
-      image: '',
-      origin: { name: '' },
-      species: '',
-      status: '',
-    });
-  };
+    const newCard = { id: Date.now(), ...formData };
 
-  return (
+    setCards((prevCards) => [...prevCards, newCard]);
+    setFormData({ name: '', image: '', origin: { name: '' }, species: '', status: '' });
+
+    navigate('/lista');
+};
+
+return (
     <form className="formulario" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name">Nombre</label>

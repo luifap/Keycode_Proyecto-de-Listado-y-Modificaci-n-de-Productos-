@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import Card from "../cards/Card";
-import Formulario from "../pages/Formulario";
-import PaginaLista from "../pages/PaginaLista";
 
 function Navepage({ page, setPage }) {
   const totalPages = 10; 
@@ -21,7 +19,7 @@ function Navepage({ page, setPage }) {
     <div className="pagination-container">
       <p className="pagination-text">Página: {page}</p>
       <div>
-        <button onClick={() => setPage(page - 1)} disabled={page === 1} className="btn btn-secondary">
+        <button onClick={() => setPage(page - 1)} disabled={page === 1} className="pagination-button">
           Anterior
         </button>
         {getPageNumbers().map((number) => (
@@ -34,7 +32,7 @@ function Navepage({ page, setPage }) {
             {number}
           </span>
         ))}
-        <button onClick={() => setPage(page + 1)} disabled={page === totalPages} className="btn btn-secondary">
+        <button onClick={() => setPage(page + 1)} disabled={page === totalPages} className="pagination-button">
           Siguiente
         </button>
       </div>
@@ -42,53 +40,44 @@ function Navepage({ page, setPage }) {
   );
 }
 
-function CardList() {
-  const [cards, setCards] = useState([]);
-
-  //Para que la aplicación no se de more en cargar:
+function CardList({ cards, setCards }) {
   const [loading, setLoading] = useState(true);
-
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [apiCards, setApiCards] = useState([]); 
 
-
+  // Lógica para cargar personajes
   useEffect(() => {
     const fetchCharacters = async () => {
       setLoading(true);
-      const response = await fetch(
-        `https://rickandmortyapi.com/api/character?page=${page}`
-      );
+      const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
       const data = await response.json();
-      setCards(data.results);
+      setApiCards(data.results);
       setLoading(false);
     };
 
-    fetchCharacters();
+    fetchCharacters(); 
   }, [page]);
 
-  // Filtro de busqueda
-  const filteredCards = cards.filter(card => {
-    const lowerCaseTerm = searchTerm.toLowerCase();
-    return (
-      card.name.toLowerCase().includes(lowerCaseTerm) ||
-      card.origin.name.toLowerCase().includes(lowerCaseTerm) ||
-      card.species.toLowerCase().includes(lowerCaseTerm) ||
-      card.status.toLowerCase().includes(lowerCaseTerm)
-    );
+  // Filtro de búsqueda
+
+
+  const filteredCards = [...apiCards, ...cards].filter(card => {
+      const lowerCaseTerm = searchTerm.toLowerCase();
+      return (
+          card.name.toLowerCase().includes(lowerCaseTerm) ||
+          card.origin.name.toLowerCase().includes(lowerCaseTerm) ||
+          card.species.toLowerCase().includes(lowerCaseTerm) ||
+          card.status.toLowerCase().includes(lowerCaseTerm)
+      );
   });
-
-  const handleAddCard = (newCard) => {
-    setCards((prevCards) => [...prevCards, newCard]);
-  };
-
-    
 
   if (loading) {
     return <div>Cargando página...</div>;
   }
 
   return (
-    <div >
+    <div>
       <Navepage page={page} setPage={setPage} />
 
       <input
@@ -99,11 +88,9 @@ function CardList() {
         className="search-bar"
       />
 
-        <Formulario onSubmit={handleAddCard} />
-
       <div className="lista-productos">
         {filteredCards.map((card) => (
-          <Card key={card.id} card={card} /> 
+          <Card key={card.id} card={card} />
         ))}
       </div>
     </div>
